@@ -8,7 +8,7 @@
       <canvas id="canvas" width="200" height="150"></canvas>
       <br>
       <el-button @click="capture">抓图</el-button>
-      <el-button >新建打点</el-button>
+      <el-button @click="addT">新建打点</el-button>
 
       <fieldset class="dad">
         <legend>视频打点</legend>
@@ -41,10 +41,10 @@
               </td>
           
               <td>
-                <el-button type icon="el-icon-video-play"></el-button>
+                <el-button type icon="el-icon-video-play" @click="tzj(index)"></el-button>
               </td>
               <td>
-                <el-button type icon="el-icon-circle-close"></el-button>
+                <el-button type icon="el-icon-circle-close" @click="del(index)"></el-button>
               </td>
             </tr>
           </tbody>
@@ -81,7 +81,7 @@ export default {
       console.log(this);
     },
     dad(index){      
-      let times = this.$refs.vdo.currentTime
+      let times = this.$refs.vdo.currentTime.toFixed(2)
       console.log(index);
       console.log(this.data[index]);
       this.data[index].start=times
@@ -89,7 +89,7 @@ export default {
       console.log(this.data); 
     },
     end(index){
-    let times = this.$refs.vdo.currentTime
+    let times = this.$refs.vdo.currentTime.toFixed(2)
       console.log(index);
       console.log(this.data[index]);  
       this.data[index].end=times
@@ -101,9 +101,23 @@ export default {
       console.log(this.data[index].start);
       let times =this.data[index].start
       this.$refs.vdo.currentTime =times
+    },
+    tzj(index){
+   console.log(this.data[index].start);
+      let times =this.data[index].end
+      this.$refs.vdo.currentTime =times
+    },
+    addT(){
+      console.log(this.data);
+      this.data.push({
+          start:'',
+          end:''
+        })
+    },
+    del(index){
+      this.data.splice(index,1)
     }
   }
-
 };
 </script>
 <style >

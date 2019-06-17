@@ -1,4 +1,6 @@
-# tu
+# VUE+canves实现视频的播放 截图 以及打点功能
+  是我项目中的一个功能 主要是element的框架 使用了dialog弹框
+  
 
 > A Vue.js project
 
